@@ -1,0 +1,92 @@
+{  
+	"svm":[ "energy", "mfcc", "spectralShapeStatistics", "perceptualSharpness", "spectralFlux" ],
+
+	"nn":[ "energy", "mfcc", "spectralShapeStatistics", "perceptualSharpness", "lpc" ],
+
+	"knn":[ "energy", "mfcc", "spectralShapeStatistics", "perceptualSharpness", "lpc" ],
+
+	"voter":[ "energy", "mfcc", "spectralShapeStatistics", "perceptualSharpness", "lpc", "spectralFlux" ],
+
+	"keep_mfcc_svm":[ "mfcc_0", "mfcc_1", "mfcc_2", "mfcc_3", "mfcc_4" ],
+
+	"keep_spectralShapeStatistics_svm":[ "spectralShapeStatistics_0", "spectralShapeStatistics_3" ],
+
+	"keep_mfcc_nn":[ "mfcc_2", "mfcc_3" ],
+
+	"keep_spectralShapeStatistics_nn":[ "spectralShapeStatistics_1", "spectralShapeStatistics_2", "spectralShapeStatistics_3" ],
+
+	"keep_lpc_nn":[ "lpc_0" ],
+
+	"keep_mfcc_knn":[ "mfcc_0", "mfcc_1", "mfcc_2", "mfcc_3", "mfcc_6" ],
+
+	"keep_lpc_knn":[ "lpc_0" ],
+
+	"keep_spectralShapeStatistics_knn":[ "spectralShapeStatistics_2", "spectralShapeStatistics_3" ],
+
+	"svme":[ "energy" ],
+
+	"nne":[ "energy" ],
+
+	"knne":[ "energy" ],
+
+	"votere":[ "energy" ],
+
+	"svm_mean":[ "mfcc_4", "mfcc_1", "spectralShapeStatistics_3", "spectralShapeStatistics_0", "perceptualSharpness_0", "spectralFlux_0" ],
+
+	"svm_var":[ "mfcc_0", "mfcc_2", "mfcc_3" ],
+
+	"svm_mean_var":[ ],
+
+	"knn_mean":[ "mfcc_2", "mfcc_1", "lpc_0", "spectralShapeStatistics_3", "perceptualSharpness_0", "spectralShapeStatistics_2" ],
+
+	"knn_var":[ "mfcc_6", "mfcc_2", "mfcc_3" ],
+
+	"knn_mean_var":[ "mfcc_0" ],
+
+	"nn_mean":[ ],
+
+	"nn_var":[ "mfcc_2", "mfcc_3" ],
+
+	"nn_mean_var":[ "lpc_0", "spectralShapeStatistics_3", "spectralShapeStatistics_2", "spectralShapeStatistics_1", "perceptualSharpness_0" ],
+
+	"voter_algo":[ "nn", "knn", "svm" ],
+
+	"votere_algo":[ "knne", "nne", "svme" ],
+
+	"voter_mean":[ "spectralShapeStatistics_3", "spectralShapeStatistics_0", "perceptualSharpness_0", "mfcc_2", "lpc_0", "spectralShapeStatistics_2", "mfcc_1", "spectralFlux_0", "mfcc_4" ],
+
+	"voter_var":[ "mfcc_0", "mfcc_6", "mfcc_2", "mfcc_3" ],
+
+	"voter_mean_var":[ "mfcc_0", "lpc_0", "spectralShapeStatistics_3", "spectralShapeStatistics_2" ],
+
+	"knn_folder":"./clfs_and_scalers/knn",
+	"knne_folder":"./clfs_and_scalers/knne",
+	"nn_folder":"./clfs_and_scalers/nn",
+	"nne_folder":"./clfs_and_scalers/nne",
+	"svm_folder":"./clfs_and_scalers/svm",
+	"svme_folder":"./clfs_and_scalers/svme",
+
+	"svm_features":[ "low_energy_proportion", "mfcc_2_var", "mfcc_3_var", "autocorrelation_2", "spectralShapeStatistics_3_mean", "perceptualSharpness_0_mean", "mfcc_0_var", "mfcc_4_mean", "spectralShapeStatistics_0_mean", "spectralFlux_0_mean", "mfcc_1_mean" ],
+
+	"svme_features":[ "low_energy_proportion", "autocorrelation_2" ],
+
+	"nn_features":[ "low_energy_proportion", "mfcc_2_var", "autocorrelation_2", "spectralShapeStatistics_3_mean", "perceptualSharpness_0_mean", "mfcc_3_var", "spectralShapeStatistics_2_var", "energy_0_mean", "lpc_0_mean", "rms", "spectralShapeStatistics_2_mean", "perceptualSharpness_0_var", "spectralShapeStatistics_3_var", "spectralShapeStatistics_1_mean", "spectralShapeStatistics_1_var", "lpc_0_var" ],
+
+	"nne_features":[ "low_energy_proportion", "autocorrelation_2", "energy_0_mean", "rms" ],
+
+	"knn_features":[ "low_energy_proportion", "mfcc_2_var", "autocorrelation_2", "spectralShapeStatistics_3_mean", "perceptualSharpness_0_mean", "mfcc_3_var", "mfcc_0_var", "energy_0_var", "lpc_0_mean", "mfcc_0_mean", "energy_0_mean", "mfcc_2_mean", "mfcc_1_mean", "mfcc_6_var", "spectralShapeStatistics_2_mean" ],
+
+	"knne_features":[ "low_energy_proportion", "energy_0_mean", "autocorrelation_2", "energy_0_var" ],
+
+	"variables" : {
+                "zeroCrossing": "zeroCrossing: ZCR blockSize=882 stepSize=441",
+                "mfcc" : "mfcc: MFCC blockSize=882 stepSize=441",
+                "magnitudeSpectrum": "magnitudeSpectrum: MagnitudeSpectrum blockSize=882 stepSize=441", 
+		"energy": "energy: Energy blockSize=882 stepSize=441", 			"spectralFlux": "spectralFlux: SpectralFlux blockSize=882 stepSize=441",
+                "amplitudeModulation": "amplitudeModulation: AmplitudeModulation blockSize=882 stepSize=441", "spectralRollof": 			"spectralRollof: SpectralRolloff blockSize=882 stepSize=441",
+                "perceptualSharpness": "perceptualSharpness: PerceptualSharpness blockSize=882 stepSize=441",
+                "lpc" : "lpc: LPC blockSize=882 stepSize=441",
+                "spectralShapeStatistics": "spectralShapeStatistics: SpectralShapeStatistics blockSize=882 stepSize=441"
+                }
+
+}

@@ -1,0 +1,21 @@
+{
+    "AUDIO_DATA_PATH": "../../speech-new.csv",
+    "CSV_PATH": "../../audio-speech-new/{}.{}.csv",
+    "CSV_OUT": "../../prepared_data/speech-new/",
+    "FEATURES": ["spectralFlux", "energy", "zeroCrossing", "spectralRollof", "mfcc"],
+    "PLOTS_PATH": "../../plots/",
+    "PLOTS_NORM_PATH": "../../plots/norm/",
+    "DATASET": "../../prepared_data/speech-new/dataset.csv",
+    "BIVAR_PLOTS_FEATURES": "../../plots/norm/bivar_features/",
+    "BIVAR_FEATURE_TARGET": "../../plots/norm/bivar_music/",
+    "SEG_SIZE": 20,
+    "FRAME_SIZE": 1000,
+    "AUDIO_DATA_PATH_FIRST":  "../../data.csv",
+    "CSV_PATH_FIRST":  "../../audio-data/{}.{}.csv",
+    "CSV_NORM_FIRST": "../../prepared_data/norm/",
+    "CSV_OUT_FIRST": "../../prepared_data/",
+    "DATASET_FIRST": "../../prepared_data/dataset.csv",
+    "DATASET_NORM_FIRST": "../../prepared_data/norm/dataset.csv",
+    "DATASET_JOINED": "final_dataset.csv",
+    "OUTPUT_FOLDER": "./output/"
+}
