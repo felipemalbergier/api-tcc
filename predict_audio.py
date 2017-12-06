@@ -4,10 +4,8 @@ import pickle
 import time
 from os.path import basename
 
-# from yaafelib import *
-
-import featureExtraction as fex
-import variablesExtractionScript_OnlyOne as vex
+import feature_extraction as fex
+import variables_extraction as vex
 
 with open('features.json') as json_data:
     feat_config = json.load(json_data)
@@ -23,8 +21,8 @@ def remove_outliers(prediction):
 
 def predict_audio(clf_and_scaler_folder, used_features, clf_to_use):
     output_path = config['OUTPUT_FOLDER']
+    
     # From csv files get features from 1 second frames
-    # features = fex.main(output_path, used_features, clf_time) 
     features = fex.main(output_path, used_features, clf_to_use)
 
     scaler_file = 'scaler.sav'
@@ -35,27 +33,23 @@ def predict_audio(clf_and_scaler_folder, used_features, clf_to_use):
     clf_file = clf_and_scaler_folder + '/' + clf_file
     clf = pickle.load(open(clf_file, 'rb'))
     
-    
-    print('Scaler {}\nModelo {}'.format(scaler_file, clf_file))
-    print (features.shape)
     scaled_data = scaler.transform(features)
 
     predicted = clf.predict(scaled_data)
-
     new_predicted = remove_outliers(predicted)
-
+    
     new_predicted = list(new_predicted)
-
+    
     likely_to_be_music = sum(new_predicted)/len(new_predicted)
 
     return (likely_to_be_music,new_predicted)
 
 def voter_result (results_voter):
-    # Fazendo votador
+    # Calculating voter
     results_final = [sum(x) for x in zip(*results_voter)]
     for i, result in enumerate(results_final):
         if result >= int(len(results_voter)/2.0 + 0.5) :
-           results_final[i] = 1
+            results_final[i] = 1
         else:
             results_final[i] = 0
     likely_to_be_music = sum(results_final)/len(results_final)
@@ -63,9 +57,10 @@ def voter_result (results_voter):
     return likely_to_be_music    
 
 def main(audio_file, algo):
+    # Get variables to extract from audio
     variables_to_extract = feat_config[algo]
 
-    # Create list of csv files created
+    # Create list of csv with variables extracted
     vex.main(audio_file, variables_to_extract)
     
     sec_by_sec_prediction_array = []
@@ -76,10 +71,11 @@ def main(audio_file, algo):
         used_clf_list = [algo]
         use_voter = False
     else:
-        # If a voter
+        # If a voter - (voter or votere)
         used_clf_list = feat_config['{}_algo'.format(algo)]
         use_voter = True
 
+    # for each classifier predict if speech or music
     for clf in used_clf_list:
         results = predict_audio(feat_config[clf + '_folder'], feat_config[clf+ '_features'], clf)
         likely_to_be_music, prediction_sec_by_sec = results
@@ -89,6 +85,7 @@ def main(audio_file, algo):
         
         print ('Used Classifier: {}\nProbability to be music: {}%'.format(clf, likely_to_be_music * 100))
     
+    #calculate voter if necessary
     if use_voter:
         likely_to_be_music_voter = voter_result(sec_by_sec_prediction_array)
 
@@ -105,9 +102,8 @@ def main(audio_file, algo):
 
 
 if __name__ == '__main__':
-    a = time.time()
-    clf = 'svm'#input('Used classifier: ')
-    # audio_file = '/home/felipe/Downloads/80s_2017_11_22__12_36_00.wav'
-    audio_file = '/home/felipe/Downloads/80s_2017_11_22__12_13_57.wav'#input('Audio file path: ')
+    initial_time = time.time()
+    clf = input('Used classifier: ')
+    audio_file = input('Audio file path: ')
     print (main(audio_file, clf))
-    print ('Final time '+ str(time.time()-a) )
+    print ('Final time '+ str(time.time()-initial_time) )

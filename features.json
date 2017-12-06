@@ -66,17 +66,21 @@
 	"svm_folder":"./clfs_and_scalers/svm",
 	"svme_folder":"./clfs_and_scalers/svme",
 
-	"svm_features":[ "low_energy_proportion", "mfcc_2_var", "mfcc_3_var", "autocorrelation_2", "spectralShapeStatistics_3_mean", "perceptualSharpness_0_mean", "mfcc_0_var", "mfcc_4_mean", "spectralShapeStatistics_0_mean", "spectralFlux_0_mean", "mfcc_1_mean" ],
+	"svm_features": ["low_energy_proportion", "mfcc_2_var", "mfcc_3_var", 
+                "autocorrelation", "spectralShapeStatistics_3_mean", 
+                "perceptualSharpness_0_mean", "mfcc_0_var", "mfcc_4_mean", 
+                "spectralShapeStatistics_0_mean", "spectralFlux_0_mean", 
+                "mfcc_1_mean"],
 
-	"svme_features":[ "low_energy_proportion", "autocorrelation_2" ],
+	"svme_features":["low_energy_proportion", "autocorrelation", "rms"],
 
-	"nn_features":[ "low_energy_proportion", "mfcc_2_var", "autocorrelation_2", "spectralShapeStatistics_3_mean", "perceptualSharpness_0_mean", "mfcc_3_var", "spectralShapeStatistics_2_var", "energy_0_mean", "lpc_0_mean", "rms", "spectralShapeStatistics_2_mean", "perceptualSharpness_0_var", "spectralShapeStatistics_3_var", "spectralShapeStatistics_1_mean", "spectralShapeStatistics_1_var", "lpc_0_var" ],
+	"nn_features":[ "low_energy_proportion", "mfcc_2_var", "autocorrelation", "spectralShapeStatistics_3_mean", "perceptualSharpness_0_mean", "mfcc_3_var", "spectralShapeStatistics_2_var", "energy_0_mean", "lpc_0_mean", "rms", "spectralShapeStatistics_2_mean", "perceptualSharpness_0_var", "spectralShapeStatistics_3_var", "spectralShapeStatistics_1_mean", "spectralShapeStatistics_1_var", "lpc_0_var" ],
 
-	"nne_features":[ "low_energy_proportion", "autocorrelation_2", "energy_0_mean", "rms" ],
+	"nne_features":[ "low_energy_proportion", "autocorrelation", "energy_0_mean", "rms" ],
 
-	"knn_features":[ "low_energy_proportion", "mfcc_2_var", "autocorrelation_2", "spectralShapeStatistics_3_mean", "perceptualSharpness_0_mean", "mfcc_3_var", "mfcc_0_var", "energy_0_var", "lpc_0_mean", "mfcc_0_mean", "energy_0_mean", "mfcc_2_mean", "mfcc_1_mean", "mfcc_6_var", "spectralShapeStatistics_2_mean" ],
+	"knn_features":[ "low_energy_proportion", "mfcc_2_var", "autocorrelation", "spectralShapeStatistics_3_mean", "perceptualSharpness_0_mean", "mfcc_3_var", "mfcc_0_var", "energy_0_var", "lpc_0_mean", "mfcc_0_mean", "energy_0_mean", "mfcc_2_mean", "mfcc_1_mean", "mfcc_6_var", "spectralShapeStatistics_2_mean" ],
 
-	"knne_features":[ "low_energy_proportion", "energy_0_mean", "autocorrelation_2", "energy_0_var" ],
+	"knne_features":[ "low_energy_proportion", "energy_0_mean", "autocorrelation", "energy_0_var" ],
 
 	"variables" : {
                 "zeroCrossing": "zeroCrossing: ZCR blockSize=882 stepSize=441",
