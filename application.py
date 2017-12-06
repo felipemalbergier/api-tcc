@@ -9,7 +9,7 @@ app = Flask(__name__)
 ALLOWED_EXTENSIONS = set(['txt', 'wav'])
 UPLOAD_FOLDER = os.getcwd()+'/files/'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-if not os.isdir(UPLOAD_FOLDER): os.mkdir(UPLOAD_FOLDER)
+if not os.path.isdir(UPLOAD_FOLDER): os.mkdir(UPLOAD_FOLDER)
 
 startup_time = datetime.now()
 @app.route("/")
