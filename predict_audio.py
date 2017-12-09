@@ -3,7 +3,7 @@ import json
 import pickle
 import time
 from os.path import basename
-
+import os
 import feature_extraction as fex
 import variables_extraction as vex
 
@@ -54,7 +54,7 @@ def voter_result (results_voter):
             results_final[i] = 0
     likely_to_be_music = sum(results_final)/len(results_final)
     
-    return likely_to_be_music    
+    return likely_to_be_music, results_final
 
 def main(audio_file, algo):
     # Get variables to extract from audio
@@ -87,7 +87,7 @@ def main(audio_file, algo):
     
     #calculate voter if necessary
     if use_voter:
-        likely_to_be_music_voter = voter_result(sec_by_sec_prediction_array)
+        likely_to_be_music_voter,sec_by_sec_voter = voter_result(sec_by_sec_prediction_array)
 
         print ('Final Result with Voter:\nProbability to be music: {}%'.format(likely_to_be_music_voter * 100))
     
@@ -96,8 +96,11 @@ def main(audio_file, algo):
     for i, value in enumerate(sec_by_sec_prediction_array):
         to_return[used_clf_list[i]] = {'sec_by_sec_music_prediction':value, "likely_to_be_music": likely_to_be_music_array[i]}
     if use_voter:
-        to_return['voter'] = likely_to_be_music_voter
+        to_return['voter'] = {'sec_by_sec_music_prediction':sec_by_sec_voter,'likely_to_be_music':likely_to_be_music_voter}
         
+    #Delete audio file
+    os.system('sudo rm {}'.format(audio_file))
+
     return json.dumps(to_return, ensure_ascii=False)
 
 
