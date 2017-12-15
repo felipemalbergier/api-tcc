@@ -35,10 +35,8 @@ O [algoritmo] no endereço define qual classificador será utilizado na prediç�
 A instalação da biblioteca YAAFE é feita através do gerenciado de arquivos Conda (https://conda.io/docs/) e pode ser feito com os seguintes comandos:
 
 1) wget http://repo.continuum.io/archive/Anaconda3-4.3.1-Linux-x86_64.sh
- 
 2) bash Anaconda3-4.3.1-Linux-x86_64.sh
-3) source ~/.bashrc
-4) conda install -c conda-forge yaafe=0.70
+3) conda install -c conda-forge yaafe=0.70
 
 ## Retorno da API
 
