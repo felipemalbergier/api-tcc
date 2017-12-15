@@ -56,8 +56,13 @@ Após processar o áudio a API retorna um arquivo JSON no formato:
          }
 
 Do arquivo JSON acima, temos:
+
 – [nomearquivo]: Nome do áudio enviado.
+
 – [algoritmo1/2]: Abreviação do algoritmo usado na classificação.
+
 – [arrayComPrevisaoDeCadaSegundo]: Uma lista cujo número de elementos é igualao tempo do áudio em segundos.  Cada elemento pode ser zero ou um, assim, caso seja zero, aquele segundo foi previsto como fala e caso seja um, foi previsto comomúsica.
+
 – [ProbabilidadeDeSerMusica]:  Probabilidade do áudio todo ser música.  Este parâmetro é calculado somando todos os elementos do [arrayComPrevisaoDeCadaSegundo] e dividindo pelo seu tamanho.
+
 – Os valores com as chaves voter e algoritmo2 apenas aparecem quando o algoritmo escolhido é voter ou votere.
